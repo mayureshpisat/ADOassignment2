@@ -1,6 +1,6 @@
 ﻿namespace SubjectLibrary
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple =false)]
+    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
     public class IsTableAttribute : Attribute
     {
         public IsTableAttribute()
