@@ -13,7 +13,7 @@
     [AttributeUsage(AttributeTargets.Property, Inherited = false, AllowMultiple =false)]
     public class IsColumnAttribute : Attribute
     {
-        string dataType;
+        public string dataType { get; }
         public IsColumnAttribute(string DataType)
         {
             dataType = DataType;
