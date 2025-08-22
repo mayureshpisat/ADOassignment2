@@ -14,9 +14,27 @@
     public class IsColumnAttribute : Attribute
     {
         public string dataType { get; }
-        public IsColumnAttribute(string DataType)
+        public string length { get; set; } //default null
+        public bool isPrimary  { get; set; } //default null
+
+        public int seedValue { get; set; } //default = 0
+
+        public int increment { get; set; }
+
+        public IsColumnAttribute(string dataType)
         {
-            dataType = DataType;
+            this.dataType = dataType;
+
+            if(dataType == "INT")
+            {
+                length = null;
+            }
+
+            if (isPrimary == true && seedValue==0 && increment == 0)
+            {
+                seedValue = 1;
+                increment = 1;
+            }
         }
     }
 
@@ -24,13 +42,13 @@
     [IsTable]
     public class Subject
     {
-        [IsColumn("INT")]
+        [IsColumn("INT", isPrimary =true, seedValue =1)]
         public int Id { get; set; }
 
-        [IsColumn("VARCHAR(100)")]
+        [IsColumn("VARCHAR", length ="100")]
         public string Description { get; set; }
 
-        [IsColumn("VARCHAR(10)")]
+        [IsColumn("VARCHAR", length ="50")]
         public string Code { get; set; }
 
 
